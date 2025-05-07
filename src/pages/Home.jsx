@@ -92,9 +92,12 @@ const Home = () => {
 
   const handleFriend = async (id) => {
     try {
-      const response = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_SERVER_API}/friend/${loginUser.id}/${id}`
       );
+      handleSuccess("Friend request sent successfully");
+      handleGetRequestedUser();
+      setInput("");
     } catch (err) {
       console.log(err);
     }

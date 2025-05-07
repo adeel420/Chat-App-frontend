@@ -38,9 +38,12 @@ const Chats = ({ selectedUser, loginUser }) => {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
+
+      // Immediately show the sent message
+      setMessages((prev) => [...prev, response.data]);
+
       setInput("");
       setFile("");
-      handleGet(); // Refresh messages after sending
     } catch (err) {
       console.log(err);
     }
